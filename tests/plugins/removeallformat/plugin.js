@@ -47,6 +47,34 @@ bender.test(
 		} );
 	},
 
+	'test remove format always remove link - inside link': function() {
+		var ed = this.editor, bot = this.editorBot;
+
+		bender.editorBot.create( {
+			name: 'test_editor5',
+			config: { allowedContent: true }
+		}, function( bot ) {
+			bot.setHtmlWithSelection( '<p><a href="http://google.com">[Google]</a></p>' );
+
+			bot.editor.execCommand( 'removeallformat' );
+			assert.areEqual( '<p>Google</p>', bot.getData() );
+		} );
+	},
+
+	'test remove format always remove link - outside link': function() {
+		var ed = this.editor, bot = this.editorBot;
+
+		bender.editorBot.create( {
+			name: 'test_editor6',
+			config: { allowedContent: true }
+		}, function( bot ) {
+			bot.setHtmlWithSelection( '<p>This is [<a href="http://google.com">Google</a>]</p>' );
+
+			bot.editor.execCommand( 'removeallformat' );
+			assert.areEqual( '<p>This is Google</p>', bot.getData() );
+		} );
+	},
+
 	'test remove format inside nested editable': function() {
 		var editor = this.editor,
 			bot = this.editorBot;
