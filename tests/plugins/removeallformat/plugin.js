@@ -20,6 +20,13 @@ bender.test(
 		ed.execCommand( 'removeallformat' );
 	},
 
+	'test removeallformat works inside nested editable': function() {
+		var bot = this.editorBot;
+		bot.setHtmlWithSelection( '<p>foo</p><div contenteditable="false"><p contenteditable="true">[<b>foo</b> bar]</p></div>' );
+		bot.editor.execCommand( 'removeallformat' );
+		assert.areEqual( '<p>foo</p><div contenteditable="false"><p contenteditable="true">foo bar</p></div>', bot.getData() );
+	},
+
 	'test removeallformat remove strikethrough, superscript, subscript': function() {
 		bender.editorBot.create( {
 			name: 'test_editor2',
@@ -41,15 +48,6 @@ bender.test(
 			assert.areEqual( '<p>bold italicize underline</p>', bot.getData() );
 		} );
 	},
-
-
-	'test removeallformat works inside nested editable': function() {
-		var bot = this.editorBot;
-		bot.setHtmlWithSelection( '<p>foo</p><div contenteditable="false"><p contenteditable="true">[<b>foo</b> bar]</p></div>' );
-		bot.editor.execCommand( 'removeallformat' );
-		assert.areEqual( '<p>foo</p><div contenteditable="false"><p contenteditable="true">foo bar</p></div>', bot.getData() );
-	},
-
 
 	'test removeallformat remove ul': function() {
 		bender.editorBot.create( {
