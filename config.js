@@ -17,7 +17,7 @@ CKEDITOR.editorConfig = function( config ) {
 		'clipboard,' +
 		'colorbutton,' +
 		'colordialog,' +
-		'contextmenu,' +
+		// 'contextmenu,' +
 		'dialogadvtab,' +
 		'div,' +
 		'elementspath,' +
@@ -26,31 +26,32 @@ CKEDITOR.editorConfig = function( config ) {
 		'filebrowser,'+
 		'find,' +
 		'flash,' +
-		'floatingspace,' +
+		// 'floatingspace,' +
 		'font,' +
 		'format,' +
 		'forms,' +
 		'horizontalrule,' +
 		'htmlwriter,' +
-		'image,' +
+		// 'image,' +
 		'iframe,' +
 		'indentlist,' +
 		'indentblock,' +
 		'justify,' +
 		'language,' +
 		'link,' +
+		'linkutils,' +
 		'list,' +
-		'liststyle,' +
+		// 'liststyle,' +
 		'magicline,' +
 		'maximize,' +
 		'newpage,' +
 		'pagebreak,' +
 		'pastefromword,' +
 		'pastetext,' +
-		'preview,' +
-		'print,' +
+		// 'preview,' +
+		// 'print,' +
 		'removeformat,' +
-		'resize,' +
+		// 'resize,' +
 		'save,' +
 		'selectall,' +
 		'sharedspace,' +
@@ -61,8 +62,8 @@ CKEDITOR.editorConfig = function( config ) {
 		'specialchar,' +
 		'stylescombo,' +
 		'tab,' +
-		'table,' +
-		'tabletools,' +
+		// 'table,' +
+		// 'tabletools,' +
 		'templates,' +
 		'toolbar,' +
 		'undo,' +
@@ -99,6 +100,35 @@ CKEDITOR.editorConfig = function( config ) {
 			}
 		}
 	];
+
+	// TODO
+	// Is this the best place to put this function
+	// http://stackoverflow.com/questions/12676023/ckeditor-link-dialog-removing-protocol
+	CKEDITOR.on('dialogDefinition', function(e) {
+		// NOTE: this is an instance of CKEDITOR.dialog.definitionObject
+		var dd = e.data.definition;
+
+		if (e.data.name === 'link') {
+			dd.minHeight = 30;
+
+			// remove the unwanted tabs
+			dd.removeContents('advanced');
+			dd.removeContents('target');
+			dd.removeContents('upload');
+
+			var infoTab = dd.getContents('info');
+			// a workaround because of this bug
+			// http://dev.ckeditor.com/ticket/12287
+			// http://ckeditor.com/forums/Plugins/Problems-removing-dialog-fields-of-link-plugin-in-4.4.3
+			infoTab.get( 'linkType' ).style = 'display: none';
+			infoTab.get( 'urlOptions' ).children[ 0 ].children.shift();
+
+			// Set the default value for the URL field.
+			var urlField = infoTab.get( 'url' );
+			urlField['default'] = 'www.example.com';
+
+		}
+	});
 };
 
 // %LEAVE_UNMINIFIED% %REMOVE_LINE%
