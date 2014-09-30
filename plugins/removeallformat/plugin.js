@@ -27,13 +27,17 @@ CKEDITOR.plugins.add( 'removeallformat', {
 
 				//restore selection
 				//Not perfect but very hard to get it working all the time
-				editor.getSelection().selectBookmarks( bookmarks );
+				try {
+					editor.getSelection().selectBookmarks( bookmarks );
+				} catch (e) {
+					console.log('Failed to restore selection after removeallformat.');
+				}
 			}
 		});
 
 		//Define a button that will be associated with the removeallformat command
 		//Button name = 'RemoveAllFormat'
-		editor.ui.addButton( 'RemoveAllFormat', {
+		editor.ui.addButton && editor.ui.addButton( 'RemoveAllFormat', {
 			label: 'Remove all format',
 			command: 'removeallformat',
 			toolbar: 'cleanup'
