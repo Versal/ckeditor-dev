@@ -8,63 +8,34 @@ CKEDITOR.editorConfig = function( config ) {
 	// config.language = 'fr';
 	// config.uiColor = '#AADC6E';
 	// %REMOVE_START%
+	//
+	// configuration for development ONLY
+	// to update production config, please change dev/builder/build-config.js
+	// please run ./build.sh with -s to skip omitted plugins
 	config.plugins =
-		// 'about,' +
 		'a11yhelp,' +	//Accessibility Help
 		'basicstyles,' +
 		'bidi,' +	//Text Direction
 		'blockquote,' +
 		'clipboard,' +
-		// 'colorbutton,' +
-		// 'colordialog,' +
-		// 'contextmenu,' +
-		// 'dialogadvtab,' +
-		// 'div,' +
-		// 'elementspath,' +
 		'enterkey,' +
 		'entities,' +
-		// 'filebrowser,' +
-		// 'find,' +
-		// 'flash,' +
-		// 'floatingspace,' +
 		'font,' +
 		'format,' +
-		// 'forms,' +
-		// 'horizontalrule,' +
 		'htmlwriter,' +
-		// 'image,' +
-		// 'iframe,' +
 		'indentlist,' +
 		'indentblock,' +
 		'justify,' +
-		// 'language,' +
 		'link,' +
 		'linkutils,' +
 		'list,' +
-		// 'liststyle,' +
-		// 'magicline,' +
-		// 'maximize,' +
-		// 'newpage,' +
-		// 'pagebreak,' +
 		'pastefromword,' +
 		'pastetext,' +
-		// 'preview,' +
-		// 'print,' +
 		'removeformat,' +
-		// 'resize,' +
-		'save,' +
-		// 'selectall,' +
+		'removeallformat,' +
 		'sharedspace,' +
-		// 'showblocks,' +
-		// 'showborders,' +
-		// 'smiley,' +
-		// 'sourcearea,' +
-		// 'specialchar,' +
 		'stylescombo,' +
 		'tab,' +
-		// 'table,' +
-		// 'tabletools,' +
-		// 'templates,' +
 		'toolbar,' +
 		'undo,' +
 		'wysiwygarea';
