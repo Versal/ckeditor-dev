@@ -3,6 +3,11 @@
  * For licensing, see LICENSE.md or http://ckeditor.com/license
  */
 
+// Important
+// We changed the default at the end of core/creators/inline.js to
+// CKEDITOR.disableAutoInline = true;
+// Otherwise, CKEditor attaches itself to every contenteditable
+
 CKEDITOR.editorConfig = function( config ) {
 	// Define changes to default configuration here. For example:
 	// config.language = 'fr';
@@ -73,6 +78,8 @@ CKEDITOR.editorConfig = function( config ) {
 	];
 
 	config.disallowedContent = 'a{*}';
+
+
 
 	// TODO
 	// Is this the best place to put this function
