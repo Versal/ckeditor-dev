@@ -1556,7 +1556,10 @@
 			var node = CKEDITOR.tools.tryThese(
 				// Is it native IE control type selection?
 				function() {
-					return self.getNative().createRange().item( 0 );
+					if (typeof self.getNative().createRange == "function") {
+						return self.getNative().createRange().item( 0 );
+					}
+					return false;
 				},
 				// Figure it out by checking if there's a single enclosed
 				// node of the range.
