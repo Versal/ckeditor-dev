@@ -90,15 +90,7 @@ CKEDITOR.editorConfig = function( config ) {
 	config.stylesSet = [
 		{ name: 'Small', element: 'span', styles: {'font-size':'12px'} },
 		{ name: 'Normal', element: 'span', styles: {'font-size':'16px'} },
-		{ name: 'Large', element: 'span', styles: {'font-size':'24px'} },
-		{ name: 'Special Container',
-			element: 'div',
-			styles: {
-				padding: '5px 10px',
-				background: '#eee',
-				border: '1px solid #ccc'
-			}
-		}
+		{ name: 'Large', element: 'span', styles: {'font-size':'24px'} }
 	];
 
 	config.disallowedContent = 'a{*}';
