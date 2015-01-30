@@ -100,7 +100,7 @@ CKEDITOR.plugins.add( 'colorbutton', {
 				},
 
 				_updateNodePosition: function () {
-					this._.panel._.iframe.setStyles({'left': '-15px', 'top': '-160px'});
+					this._.panel._.iframe.setStyles({'left': '-25px', 'top': '-250px'});
 				}
 			} );
 		}
