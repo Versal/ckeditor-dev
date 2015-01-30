@@ -64,7 +64,7 @@ panel contents and color panels check menu.css and colorpanel.css.
 
 
 /* The IFRAME the panel is wrapped into. */
-.cke_panel_color .cke_panel_frame{
+.cke_panel_color{
 	height: 100%;
 }
 
