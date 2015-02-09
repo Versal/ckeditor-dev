@@ -62,6 +62,15 @@ panel contents and color panels check menu.css and colorpanel.css.
 	width: 150px;
 }
 
+.cke_combopanel__styles
+{
+    height: 82px;
+}
+
+.cke_combopanel__font
+{
+    height: 44px;
+}
 
 /* The IFRAME the panel is wrapped into. */
 .cke_panel_color{
@@ -71,6 +80,7 @@ panel contents and color panels check menu.css and colorpanel.css.
 .cke_panel_frame
 {
 	width: 100%;
+	height: inherit;
 	font-size: 12px;
 	outline: 0;
 	display: block;

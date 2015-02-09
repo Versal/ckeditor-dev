@@ -325,10 +325,10 @@ CKEDITOR.config.dialog_backgroundCoverOpacity = .65;
 CKEDITOR.config.comboOffset = {
 	"Font Name": {
 		offsetX: -60,
-		offsetY: 80
+		offsetY: -71
 	},
 	"Formatting Styles": {
 		offsetX: -58,
-		offsetY: 43
+		offsetY: -109
 	}
 };
