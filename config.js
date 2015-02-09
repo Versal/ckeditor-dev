@@ -73,12 +73,14 @@ CKEDITOR.editorConfig = function( config ) {
 	//http://ckeditor.com/forums/CKEditor/Complete-list-of-toolbar-items
 	config.toolbar_Full = [
 		{ name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ],
-			items: [ 'Bold', 'Italic', 'Underline', 'Strike',  'RemoveAllFormat' ] },
+			items: [ 'Bold', 'Italic', 'Underline', 'Strike', 'TextColor' ] },
+        { name: 'link', items: [ 'Link' ] },
 		{ name: 'paragraph',   groups: [ 'list', 'indent', 'blocks', 'align' ],
 			items: [ 'NumberedList', 'BulletedList', 'Outdent', 'Indent', 'Blockquote',
 				'JustifyLeft', 'JustifyRight' ] },
-		{ name: 'styles', items: [ 'Link', 'Font', 'Styles' ] },
-		{ name: 'colors', items: [ 'TextColor' ] }
+        { name: 'font', items: [ 'Font' ] },
+        { name: 'style', items: [ 'Styles' ] },
+		{ name: 'etc', items: [ 'RemoveAllFormat' ] }
 	];
 
 	config.toolbar = "Full";
