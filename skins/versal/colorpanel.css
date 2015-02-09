@@ -52,6 +52,9 @@ The COLOR PALETTE section instead is a table with a variable number of cells
 {
 	font-size: 11px;
 	font-family: 'Microsoft Sans Serif', Tahoma, Arial, Verdana, Sans-Serif;
+    background-color: #fff;
+    border: 1px solid #c7c3be;
+    height: 209px;
 }
 
 a.cke_colorauto table{
@@ -64,9 +67,11 @@ a.cke_colorauto table{
 	cursor: default;
 }
 
+/*
 a.cke_colorauto:after{
 	content: 'Text color';
 }
+*/
 
 .cke_colorblock table tr:nth-child(2) td{
 	padding: 8px 0;
