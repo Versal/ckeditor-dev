@@ -59,7 +59,7 @@ panel contents and color panels check menu.css and colorpanel.css.
 /* This class represents panels which are used by rich combos. */
 .cke_combopanel
 {
-	width: 150px;
+	width: 97px;
 }
 
 .cke_combopanel__styles
@@ -140,14 +140,14 @@ is its visual representation:
 	border-right: solid 1px;
 	border-left: solid 1px;
 	border-color: #c7c3be;
-	width: 148px;
+	width: 95px;
 }
 
 /* The item of .cke_panel_list */
 .cke_panel_listItem
 {
 	margin: 0;
-	width: 150px;
+	width: 97px;
 }
 
 /* The child of .cke_panel_listItem. These elements contain spans which are
@@ -155,7 +155,7 @@ is its visual representation:
 .cke_panel_listItem a
 {
 	padding: 3px 4px;
-	width: 140px;
+	width: 87px;
 	display: block;
 	color: inherit !important;
 	text-decoration: none;
