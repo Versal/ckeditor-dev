@@ -140,7 +140,7 @@ CKEDITOR.plugins.add( 'richcombo', {
 						if ( _.state == CKEDITOR.TRISTATE_DISABLED )
 							return;
 
-						combo.createPanel( editor );
+						combo.createPanel( editor, id );
 
 						if ( _.on ) {
 							_.panel.hide();
@@ -250,7 +250,7 @@ CKEDITOR.plugins.add( 'richcombo', {
 				return instance;
 			},
 
-			createPanel: function( editor ) {
+			createPanel: function( editor, id ) {
 				if ( this._.panel )
 					return;
 
@@ -263,6 +263,10 @@ CKEDITOR.plugins.add( 'richcombo', {
 					me = this;
 
 				panel.onShow = function() {
+					var arrow = CKEDITOR.document.getById( id ).getChild( 1 ).getChild( 1 ).getChild( 0 );
+					arrow.removeClass( 'cke_combo_arrow' );
+					arrow.addClass( 'cke_combo_arrow_up' );
+
 					this.element.addClass( namedPanelCls );
 
 					me.setState( CKEDITOR.TRISTATE_ON );
@@ -282,6 +286,10 @@ CKEDITOR.plugins.add( 'richcombo', {
 				};
 
 				panel.onHide = function( preventOnClose ) {
+					var arrow = CKEDITOR.document.getById( id ).getChild( 1 ).getChild( 1 ).getChild( 0 );
+					arrow.removeClass( 'cke_combo_arrow_up' );
+					arrow.addClass( 'cke_combo_arrow' );
+
 					this.element.removeClass( namedPanelCls );
 
 					me.setState( me.modes && me.modes[ editor.mode ] ? CKEDITOR.TRISTATE_OFF : CKEDITOR.TRISTATE_DISABLED );

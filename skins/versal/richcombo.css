@@ -172,6 +172,21 @@ The visual representation of a rich combo widget looks as follows:
 	border-top: 3px solid #474747;
 }
 
+.cke_combo_arrow_up
+{
+	cursor: default;
+	margin: 11px 0 0;
+	float: left;
+
+	/* Pure CSS Arrow */
+	height: 0;
+	width: 0;
+	font-size: 0;
+	border-left: 3px solid transparent;
+	border-right: 3px solid transparent;
+	border-bottom: 3px solid #474747;
+}
+
 .cke_hc .cke_combo_arrow
 {
 	font-size: 10px;
