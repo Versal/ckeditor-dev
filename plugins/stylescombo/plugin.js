@@ -86,7 +86,9 @@
 							lastType = type;
 						}
 
-						this.add( styleName, style.type == CKEDITOR.STYLE_OBJECT ? styleName : style.buildPreview(), styleName );
+						var preview = '<span style="padding-left:6px;line-height:21px;color:#7c7975;">{}</span>'.replace('{}', styleName);
+						this.add( styleName, preview, styleName );
+						//this.add( styleName, style.type == CKEDITOR.STYLE_OBJECT ? styleName : style.buildPreview(), styleName );
 					}
 
 					this.commit();
