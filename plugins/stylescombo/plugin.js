@@ -87,6 +87,7 @@
 						}
 
 						var preview = '<span style="padding-left:6px;line-height:21px;color:#7c7975;">{}</span>'.replace('{}', styleName);
+
 						this.add( styleName, preview, styleName );
 						//this.add( styleName, style.type == CKEDITOR.STYLE_OBJECT ? styleName : style.buildPreview(), styleName );
 					}
@@ -98,10 +99,17 @@
 					editor.focus();
 					editor.fire( 'saveSnapshot' );
 
-					var style = styles[ value ],
-						elementPath = editor.elementPath();
+					var currentValue = this.getValue();
+					var currentStyle = styles[ currentValue ];
 
-					editor[ style.checkActive( elementPath, editor ) ? 'removeStyle' : 'applyStyle' ]( style );
+					var style = styles[ value ];
+					//	elementPath = editor.elementPath();
+
+					if (currentValue)
+						editor.removeStyle( currentStyle );
+
+					editor.applyStyle( style );
+					//editor[ style.checkActive( elementPath, editor ) ? 'removeStyle' : 'applyStyle' ]( style );
 					editor.fire( 'saveSnapshot' );
 				},
 
@@ -148,7 +156,7 @@
 						else
 							this.hideItem( name );
 
-						if ( style.checkActive( elementPath, editor ) )
+						if ( elementPath && style.checkActive( elementPath, editor ) )
 							this.mark( name );
 					}
 
