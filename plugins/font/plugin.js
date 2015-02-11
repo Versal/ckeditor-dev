@@ -52,17 +52,12 @@
 					var name = names[ i ];
 
 					// Add the tag entry to the panel list.
-					var style = styles[ name ];
-					var _styles = style._.definition.styles;
-					_styles['padding-left'] = '6px';
-					_styles['line-height'] = '21px';
-					_styles['color'] = '#7c7975';
-					var preview = style.buildPreview();
-					delete _styles['padding-left'];
-					delete _styles['line-height'];
-					delete _styles['color'];
-					//this.add( name, styles[ name ].buildPreview(), name );
+					var _styles = styles[ name ]._.definition.styles;
+					var preview = '<span style="padding-left:6px;line-height:21px;color:#7c7975;' +
+						'font-family:{1}">{2}</span>'.replace( '{1}', _styles['font-family'] ).replace( '{2}', name );
+
 					this.add( name, preview, name );
+					//this.add( name, styles[ name ].buildPreview(), name );
 				}
 			},
 
