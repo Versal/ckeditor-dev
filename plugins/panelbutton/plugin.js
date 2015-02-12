@@ -92,6 +92,10 @@ CKEDITOR.plugins.add( 'panelbutton', {
 
 						if ( me.onOpen )
 							me.onOpen();
+
+						var arrow = CKEDITOR.document.getById( _.id ).getChild( 2 );
+						arrow.removeClass( 'cke_button_arrow' );
+						arrow.addClass( 'cke_button_arrow_up' );
 					};
 
 					panel.onHide = function( preventOnClose ) {
@@ -104,6 +108,10 @@ CKEDITOR.plugins.add( 'panelbutton', {
 
 						if ( !preventOnClose && me.onClose )
 							me.onClose();
+
+						var arrow = CKEDITOR.document.getById( _.id ).getChild( 2 );
+						arrow.removeClass( 'cke_button_arrow_up' );
+						arrow.addClass( 'cke_button_arrow' );
 					};
 
 					panel.onEscape = function() {
