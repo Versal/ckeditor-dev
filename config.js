@@ -73,12 +73,12 @@ CKEDITOR.editorConfig = function( config ) {
 	//http://ckeditor.com/forums/CKEditor/Complete-list-of-toolbar-items
 	config.toolbar_Full = [
 		{ name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ],
-			items: [ 'Bold', 'Italic', 'Underline', 'Strike', 'Subscript',
-					'Superscript', 'RemoveAllFormat' ] },
+			items: [ 'Bold', 'Italic', 'Underline', 'Strike',  'RemoveAllFormat' ] },
 		{ name: 'paragraph',   groups: [ 'list', 'indent', 'blocks', 'align' ],
 			items: [ 'NumberedList', 'BulletedList', 'Outdent', 'Indent', 'Blockquote',
-					'JustifyLeft', 'JustifyRight', 'BidiLtr', 'BidiRtl' ] },
-		{ name: 'styles', items: [ 'Link', 'Font', 'Styles' ] }
+				'JustifyLeft', 'JustifyRight' ] },
+		{ name: 'styles', items: [ 'Link', 'Font', 'Styles' ] },
+		{ name: 'colors', items: [ 'TextColor' ] }
 	];
 
 	config.toolbar = "Full";
@@ -90,16 +90,23 @@ CKEDITOR.editorConfig = function( config ) {
 	config.stylesSet = [
 		{ name: 'Small', element: 'span', styles: {'font-size':'12px'} },
 		{ name: 'Normal', element: 'span', styles: {'font-size':'16px'} },
-		{ name: 'Large', element: 'span', styles: {'font-size':'24px'} },
-		{ name: 'Special Container',
-			element: 'div',
-			styles: {
-				padding: '5px 10px',
-				background: '#eee',
-				border: '1px solid #ccc'
-			}
-		}
+		{ name: 'Large', element: 'span', styles: {'font-size':'24px'} }
 	];
+
+	config.colorButton_colors =
+
+		'000000,444444,666666,999999,CCCCCC,EEEEEE,F3F3F3,FFFFFF,' +
+		'FF0000,FF9900,FFFF00,00FF00,00FFFF,0000FF,9900FF,FF00FF,' +
+
+		'F4CCCC,FCE5CD,FFF2CC,D9EAD3,D0E0E3,CFE2F3,D9D2E9,EAD1DC,' +
+		'EA9999,F9CB9C,FFE599,B6D7A8,A2C4C9,9FC5E8,B4A7D6,D5A6BD,' +
+		'E06666,F6B26B,FFD966,6AA84F,76A5AF,6FA8DC,8E7CC3,C27BA0,' +
+		'CC0000,E69138,F1C232,6AA84F,45818E,3D85C6,674EA7,A64D79,' +
+		'990000,B45F06,BF9000,38761D,134F5C,0B5394,351C75,741B47,' +
+		'660000,783F04,7F6000,274E13,0C343D,073763,20124D,4C1130';
+
+
+	config.colorButton_enableMore = false;
 
 	config.disallowedContent = 'a{*}';
 

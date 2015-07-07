@@ -70,6 +70,9 @@ CKEDITOR.plugins.add( 'colorbutton', {
 				// The automatic colorbox should represent the real color (#6010)
 				onOpen: function() {
 
+					// Set style attributes to iframe element
+					this._updateNodePosition();
+
 					var selection = editor.getSelection(),
 						block = selection && selection.getStartElement(),
 						path = editor.elementPath( block ),
@@ -94,6 +97,11 @@ CKEDITOR.plugins.add( 'colorbutton', {
 					this._.panel._.iframe.getFrameDocument().getById( colorBoxId ).setStyle( 'background-color', color );
 
 					return color;
+				},
+
+				_updateNodePosition: function () {
+					this._.panel._.iframe.setStyles({'left': '-25px', 'top': '-220px'});
+					this._.panel._.iframe.addClass('cke_panel_color');
 				}
 			} );
 		}

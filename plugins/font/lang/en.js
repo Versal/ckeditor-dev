@@ -8,7 +8,7 @@ CKEDITOR.plugins.setLang( 'font', 'en', {
 		voiceLabel: 'Font Size',
 		panelTitle: 'Font Size'
 	},
-	label: 'Font',
+	label: 'Font style',
 	panelTitle: 'Font Name',
 	voiceLabel: 'Font'
 } );

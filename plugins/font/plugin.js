@@ -214,8 +214,8 @@
  * @cfg {String} [font_names=see source]
  * @member CKEDITOR.config
  */
-CKEDITOR.config.font_names = 'Sans serif/AvenirNext, Avenir, sans-serif;' +
-	'Serif/Georgia, serif;';
+CKEDITOR.config.font_names = 'Sans serif/Open Sans, sans-serif;' +
+	'Serif/PT Serif, serif;';
 
 /**
  * The text to be displayed in the Font combo is none of the available values
