@@ -1,7 +1,8 @@
-﻿/**
- * @license Copyright (c) 2003-2014, CKSource - Frederico Knabben. All rights reserved.
- * For licensing, see LICENSE.md or http://ckeditor.com/license
+/**
+ * @license Copyright (c) 2003-2019, CKSource - Frederico Knabben. All rights reserved.
+ * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
  */
+
 CKEDITOR.dialog.add( 'hiddenfield', function( editor ) {
 	return {
 		title: editor.lang.forms.hidden.title,
@@ -25,8 +26,9 @@ CKEDITOR.dialog.add( 'hiddenfield', function( editor ) {
 		onOk: function() {
 			var name = this.getValueOf( 'info', '_cke_saved_name' ),
 				editor = this.getParentEditor(),
-				elementHtml = ( CKEDITOR.document.$.documentMode < 8 ? '<input name="' + CKEDITOR.tools.htmlEncode( name ) + '">' : 'input' ),
-				element = CKEDITOR.env.ie && editor.document.createElement( elementHtml );
+				element = CKEDITOR.env.ie && CKEDITOR.document.$.documentMode < 8 ?
+					editor.document.createElement( '<input name="' + CKEDITOR.tools.htmlEncode( name ) + '">' ) :
+					editor.document.createElement( 'input' );
 
 			element.setAttribute( 'type', 'hidden' );
 			this.commitContent( element );

@@ -1,6 +1,6 @@
-﻿/*
-Copyright (c) 2003-2014, CKSource - Frederico Knabben. All rights reserved.
-For licensing, see LICENSE.md or http://ckeditor.com/license
+/*
+Copyright (c) 2003-2019, CKSource - Frederico Knabben. All rights reserved.
+For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
 */
 CKEDITOR.plugins.setLang( 'forms', 'sr-latn', {
 	button: {
@@ -15,7 +15,8 @@ CKEDITOR.plugins.setLang( 'forms', 'sr-latn', {
 		checkboxTitle: 'Osobine polja za potvrdu',
 		radioTitle: 'Osobine radio-dugmeta',
 		value: 'Vrednost',
-		selected: 'Označeno'
+		selected: 'Označeno',
+		required: 'Required' // MISSING
 	},
 	form: {
 		title: 'Osobine forme',
@@ -37,6 +38,7 @@ CKEDITOR.plugins.setLang( 'forms', 'sr-latn', {
 		size: 'Veličina',
 		lines: 'linija',
 		chkMulti: 'Dozvoli višestruku selekciju',
+		required: 'Required', // MISSING
 		opText: 'Tekst',
 		opValue: 'Vrednost',
 		btnAdd: 'Dodaj',
@@ -57,6 +59,7 @@ CKEDITOR.plugins.setLang( 'forms', 'sr-latn', {
 		value: 'Vrednost',
 		charWidth: 'Širina (karaktera)',
 		maxChars: 'Maksimalno karaktera',
+		required: 'Required', // MISSING
 		type: 'Tip',
 		typeText: 'Tekst',
 		typePass: 'Lozinka',

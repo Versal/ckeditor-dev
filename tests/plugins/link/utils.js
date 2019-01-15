@@ -1,4 +1,4 @@
-/* bender-tags: editor,unit,link */
+/* bender-tags: editor,link */
 /* bender-ckeditor-plugins: toolbar,link,dialogadvtab */
 
 ( function() {
@@ -67,27 +67,17 @@
 	bender.test( {
 		'test link attributes - no link': function() {
 			assertLink( this.editorBot, '', {}, {}, [
-				'accessKey',
-				'charset',
-				'class',
 				'data-cke-pa-onclick',
 				'data-cke-saved-name',
-				'dir',
-				'id',
-				'lang',
-				'name',
 				'onclick',
-				'rel',
-				'style',
-				'tabindex',
 				'target',
-				'title',
-				'type'
+				'download'
 			] );
 		},
 
 		'test link attributes - complex': function() {
-			var html = '<a accesskey="b" charset="i" class="h" dir="rtl" href="http://x" id="a" lang="d" name="c" rel="j" style="margin-right: 0px;" tabindex="e" target="a" title="f" type="g">foo</a>';
+			var html = '<a accesskey="b" charset="i" class="h" dir="rtl" href="http://x" id="a" lang="d" name="c" ' +
+				'rel="j" style="margin-right: 0px;" tabindex="e" target="a" title="f" type="g" download="">foo</a>';
 
 			assertLink( this.editorBot, html,
 				{
@@ -100,6 +90,7 @@
 						type: 'frame',
 						name: 'a'
 					},
+					download: true,
 					advanced: {
 						advId: 'a',
 						advLangDir: 'rtl',
@@ -117,6 +108,7 @@
 				}, {
 					'data-cke-saved-href': 'http://x',
 					target: 'a',
+					download: '',
 					id: 'a',
 					dir: 'rtl',
 					accessKey: 'b',
@@ -138,6 +130,58 @@
 				] );
 		},
 
+		'test link attributes - complex (partial)': function() {
+			var html = '<a accesskey="b" charset="i" class="h" dir="rtl" href="http://x" id="a" name="c" rel="j" style="margin-right: 0px;" target="a" title="f" type="g" download="">foo</a>';
+
+			assertLink( this.editorBot, html,
+				{
+					type: 'url',
+					url: {
+						protocol: 'http://',
+						url: 'x'
+					},
+					target: {
+						type: 'frame',
+						name: 'a'
+					},
+					download: true,
+					advanced: {
+						advId: 'a',
+						advLangDir: 'rtl',
+						advAccessKey: 'b',
+						advName: 'c',
+						advTitle: 'f',
+						advContentType: 'g',
+						advCSSClasses: 'h',
+						advCharset: 'i',
+						advStyles: 'margin-right:0px',
+						advRel: 'j'
+					}
+				}, {
+					'data-cke-saved-href': 'http://x',
+					target: 'a',
+					download: '',
+					id: 'a',
+					dir: 'rtl',
+					accessKey: 'b',
+					name: 'c',
+					title: 'f',
+					type: 'g',
+					'class': 'h',
+					charset: 'i',
+					style: 'margin-right:0px',
+					rel: 'j',
+					'data-cke-saved-name': 'c',
+					href: 'http://x'
+				},
+				[
+					'data-cke-pa-onclick',
+					'onclick',
+					'lang',
+					'tabindex'
+				] );
+		},
+
 		'test link attributes - mailto': function() {
 			var html = '<a href="mailto:foo?subject=bar&amp;body=bam">foo</a>';
 
@@ -154,22 +198,11 @@
 					href: 'mailto:foo?subject=bar&body=bam'
 				},
 				[
-					'accessKey',
-					'charset',
-					'class',
 					'data-cke-pa-onclick',
 					'data-cke-saved-name',
-					'dir',
-					'id',
-					'lang',
-					'name',
 					'onclick',
-					'rel',
-					'style',
-					'tabindex',
 					'target',
-					'title',
-					'type'
+					'download'
 				] );
 		},
 
@@ -188,22 +221,11 @@
 					href: 'http://x'
 				},
 				[
-					'accessKey',
-					'charset',
-					'class',
 					'data-cke-pa-onclick',
 					'data-cke-saved-name',
-					'dir',
-					'id',
-					'lang',
-					'name',
 					'onclick',
-					'rel',
-					'style',
-					'tabindex',
 					'target',
-					'title',
-					'type'
+					'download'
 				] );
 		},
 
@@ -222,22 +244,11 @@
 					href: '#a'
 				},
 				[
-					'accessKey',
-					'charset',
-					'class',
 					'data-cke-pa-onclick',
 					'data-cke-saved-name',
-					'dir',
-					'id',
-					'lang',
-					'name',
 					'onclick',
-					'rel',
-					'style',
-					'tabindex',
 					'target',
-					'title',
-					'type'
+					'download'
 				] );
 		},
 
@@ -275,21 +286,10 @@
 					href: 'http://foo'
 				},
 				[
-					'accessKey',
-					'charset',
-					'class',
 					'data-cke-saved-name',
-					'dir',
-					'id',
-					'lang',
-					'name',
 					'onclick',
-					'rel',
-					'style',
-					'tabindex',
 					'target',
-					'title',
-					'type'
+					'download'
 				] );
 		},
 
@@ -313,21 +313,10 @@
 					href: 'http://x'
 				},
 				[
-					'accessKey',
-					'charset',
-					'class',
 					'data-cke-pa-onclick',
 					'data-cke-saved-name',
-					'dir',
-					'id',
-					'lang',
-					'name',
 					'onclick',
-					'rel',
-					'style',
-					'tabindex',
-					'title',
-					'type'
+					'download'
 				] );
 		}
 	} );

@@ -1,6 +1,6 @@
-﻿/**
- * @license Copyright (c) 2003-2014, CKSource - Frederico Knabben. All rights reserved.
- * For licensing, see LICENSE.md or http://ckeditor.com/license
+/**
+ * @license Copyright (c) 2003-2019, CKSource - Frederico Knabben. All rights reserved.
+ * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
  */
 CKEDITOR.dialog.add( 'textfield', function( editor ) {
 
@@ -130,7 +130,7 @@ CKEDITOR.dialog.add( 'textfield', function( editor ) {
 					validate: CKEDITOR.dialog.validate.integer( editor.lang.common.validateNumberFailed )
 				} ],
 				onLoad: function() {
-					// Repaint the style for IE7 (#6068)
+					// Repaint the style for IE7 (https://dev.ckeditor.com/ticket/6068)
 					if ( CKEDITOR.env.ie7Compat )
 						this.getElement().setStyle( 'zoom', '100%' );
 				}
@@ -168,6 +168,22 @@ CKEDITOR.dialog.add( 'textfield', function( editor ) {
 					} else {
 						element.setAttribute( 'type', this.getValue() );
 					}
+				}
+			},
+			{
+				id: 'required',
+				type: 'checkbox',
+				label: editor.lang.forms.textfield.required,
+				'default': '',
+				accessKey: 'Q',
+				value: 'required',
+				setup: CKEDITOR.plugins.forms._setupRequiredAttribute,
+				commit: function( data ) {
+					var element = data.element;
+					if ( this.getValue() )
+						element.setAttribute( 'required', 'required' );
+					else
+						element.removeAttribute( 'required' );
 				}
 			} ]
 		} ]

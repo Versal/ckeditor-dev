@@ -1,7 +1,7 @@
-﻿// jscs:disable disallowMixedSpacesAndTabs
+// jscs:disable disallowMixedSpacesAndTabs
 /**
- * @license Copyright (c) 2003-2014, CKSource - Frederico Knabben. All rights reserved.
- * For licensing, see LICENSE.md or http://ckeditor.com/license
+ * @license Copyright (c) 2003-2019, CKSource - Frederico Knabben. All rights reserved.
+ * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
  */
 
 /**
@@ -126,6 +126,12 @@
  * The function to execute when the dialog is loaded (executed every time the dialog is opened).
  *
  * @property {Function} onShow
+ */
+
+/**
+ * The function executed every time the dialog is closed.
+ *
+ * @property {Function} onHide
  */
 
 /**
@@ -948,6 +954,11 @@
  * @property {Function} validate
  */
 
+/**
+ * @property bidi
+ * @inheritdoc CKEDITOR.dialog.definition.textarea#bidi
+ */
+
 // ----- textarea -------------------------------------------------------------
 
 /**
@@ -1004,4 +1015,24 @@
  * The default value.
  *
  * @property {String} default
+ */
+
+/**
+ * Whether the text direction of this input should be togglable using the following keystrokes:
+ *
+ * * *Shift+Alt+End* &ndash; switch to Right-To-Left,
+ * * *Shift+Alt+Home* &ndash; switch to Left-To-Right.
+ *
+ * By default the input will be loaded without any text direction set, which means that
+ * the direction will be inherited from the editor's text direction.
+ *
+ * If the direction was set, a marker will be prepended to every non-empty value of this input:
+ *
+ * * [`\u202A`](http://unicode.org/cldr/utility/character.jsp?a=202A) &ndash; for Right-To-Left,
+ * * [`\u202B`](http://unicode.org/cldr/utility/character.jsp?a=202B) &ndash; for Left-To-Right.
+ *
+ * This marker allows for restoring the same text direction upon the next dialog opening.
+ *
+ * @since 4.5
+ * @property {Boolean} bidi
  */

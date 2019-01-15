@@ -1,4 +1,4 @@
-/* bender-tags: editor,unit,widgetcore */
+/* bender-tags: widgetcore */
 /* bender-ckeditor-plugins: widget,undo */
 /* bender-include: _helpers/tools.js */
 /* global widgetTestsTools */
@@ -71,20 +71,20 @@
 
 				var widgetDef = {
 					upcasts: {
-						up1: function( el ) {
+						b: function( el ) {
 							return el.name == 'b';
 						},
-						up2: function( el ) {
+						i: function( el ) {
 							return el.name == 'i';
 						},
-						up3: function( el ) {
+						u: function( el ) {
 							return el.name == 'u';
 						}
 					}
 				};
 
 				editor.once( 'widgetDefinition', function( evt ) {
-					evt.data.upcast = 'up1,up2';
+					evt.data.upcast = 'b,i';
 				} );
 
 				editor.widgets.add( 'testup1', widgetDef );
@@ -426,22 +426,45 @@
 			} );
 		},
 
-		'test insert method': function() {
+		'test command with startup data': function() {
 			var editor = this.editor,
-				insertExecuted = 0,
-				editExecuted = 0;
+				executed = 0;
 
 			var widgetDef = {
-				insert: function() {
-					insertExecuted += 1;
-				}
+				data: function( evt ) {
+					executed += 1;
+					assert.areSame( 2, evt.data.bar, 'startup data was passed' );
+				},
+				template: '<span>data</span>'
 			};
+
+			editor.widgets.add( 'testcommanddata', widgetDef );
+
+			this.editorBot.setData( '<p>foo</p>', function() {
+				editor.execCommand( 'testcommanddata', { startupData: { bar: 2 } } );
+				assert.areSame( 1, executed, 'data listener was executed once' );
+			} );
+		},
+
+		'test insert method': function() {
+			var editor = this.editor,
+				editExecuted = 0,
+				widgetDef = {
+					insert: sinon.stub()
+				},
+				commandData = {
+					foo: 'bar'
+				};
 
 			editor.widgets.add( 'testcommand2', widgetDef );
 
 			this.editorBot.setData( '<p>foo</p>', function() {
-				editor.execCommand( 'testcommand2' );
-				assert.areSame( 1, insertExecuted, 'Insert was called once' );
+				editor.execCommand( 'testcommand2', commandData );
+				assert.areSame( 1, widgetDef.insert.callCount, 'Insert was called once' );
+				sinon.assert.calledWithExactly( widgetDef.insert, {
+					editor: editor,
+					commandData: commandData
+				} );
 
 				this.editorBot.setData( '<p>X</p><p data-widget="testcommand2" id="w1">foo</p>', function() {
 					var widget = getWidgetById( editor, 'w1' );
@@ -455,7 +478,7 @@
 
 					editor.execCommand( 'testcommand2' );
 
-					assert.areSame( 1, insertExecuted, 'Insert was not called this time' );
+					assert.areSame( 1, widgetDef.insert.callCount, 'Insert was not called this time' );
 					assert.areSame( 1, editExecuted, 'Edit was executed' );
 				} );
 			} );
@@ -689,7 +712,7 @@
 			} );
 		},
 
-		// #11533
+		// https://dev.ckeditor.com/ticket/11533
 		'test upcasting with DOM modification (split before upcasted element)': function() {
 			var editor = this.editor,
 				visited = 0;

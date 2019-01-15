@@ -1,7 +1,8 @@
-﻿/**
- * @license Copyright (c) 2003-2014, CKSource - Frederico Knabben. All rights reserved.
- * For licensing, see LICENSE.md or http://ckeditor.com/license
+/**
+ * @license Copyright (c) 2003-2019, CKSource - Frederico Knabben. All rights reserved.
+ * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
  */
+
 CKEDITOR.dialog.add( 'checkbox', function( editor ) {
 	return {
 		title: editor.lang.forms.checkboxAndRadio.checkboxTitle,
@@ -75,7 +76,7 @@ CKEDITOR.dialog.add( 'checkbox', function( editor ) {
 						element.setAttribute( 'value', value );
 					else {
 						if ( CKEDITOR.env.ie ) {
-							// Remove attribute 'value' of checkbox (#4721).
+							// Remove attribute 'value' of checkbox (https://dev.ckeditor.com/ticket/4721).
 							var checkbox = new CKEDITOR.dom.element( 'input', element.getDocument() );
 							element.copyAttributes( checkbox, { value: 1 } );
 							checkbox.replace( element );
@@ -115,11 +116,34 @@ CKEDITOR.dialog.add( 'checkbox', function( editor ) {
 						}
 					} else {
 						var value = this.getValue();
-						if ( value )
+						// Blink/Webkit needs to change checked property, not attribute. (https://dev.ckeditor.com/ticket/12465)
+						if ( CKEDITOR.env.webkit ) {
+							element.$.checked = value;
+						}
+
+						if ( value ) {
 							element.setAttribute( 'checked', 'checked' );
-						else
+						}
+						else {
 							element.removeAttribute( 'checked' );
+						}
 					}
+				}
+			},
+			{
+				id: 'required',
+				type: 'checkbox',
+				label: editor.lang.forms.checkboxAndRadio.required,
+				'default': '',
+				accessKey: 'Q',
+				value: 'required',
+				setup: CKEDITOR.plugins.forms._setupRequiredAttribute,
+				commit: function( data ) {
+					var element = data.element;
+					if ( this.getValue() )
+						element.setAttribute( 'required', 'required' );
+					else
+						element.removeAttribute( 'required' );
 				}
 			} ]
 		} ]

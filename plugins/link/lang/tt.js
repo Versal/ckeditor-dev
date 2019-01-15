@@ -1,6 +1,6 @@
 ﻿/*
-Copyright (c) 2003-2014, CKSource - Frederico Knabben. All rights reserved.
-For licensing, see LICENSE.md or http://ckeditor.com/license
+Copyright (c) 2003-2019, CKSource - Frederico Knabben. All rights reserved.
+For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
 */
 CKEDITOR.plugins.setLang( 'link', 'tt', {
 	acccessKey: 'Access Key', // MISSING
@@ -19,6 +19,8 @@ CKEDITOR.plugins.setLang( 'link', 'tt', {
 	anchorName: 'Якорь исеме буенча',
 	charset: 'Linked Resource Charset', // MISSING
 	cssClasses: 'Стильләр класслары',
+	download: 'Force Download', // MISSING
+	displayText: 'Display Text', // MISSING
 	emailAddress: 'Электрон почта адресы',
 	emailBody: 'Хат эчтәлеге',
 	emailSubject: 'Хат темасы',
@@ -33,10 +35,12 @@ CKEDITOR.plugins.setLang( 'link', 'tt', {
 	noAnchors: '(Әлеге документта якорьләр табылмады)',
 	noEmail: 'Электрон почта адресын языгыз',
 	noUrl: 'Сылталаманы языгыз',
+	noTel: 'Please type the phone number', // MISSING
 	other: '<бүтән>',
-	popupDependent: 'Dependent (Netscape)', // MISSING
+	phoneNumber: 'Phone number', // MISSING
+	popupDependent: 'Бәйле (Netscape)',
 	popupFeatures: 'Popup Window Features', // MISSING
-	popupFullScreen: 'Full Screen (IE)', // MISSING
+	popupFullScreen: 'Тулы экран (IE)',
 	popupLeft: 'Left Position', // MISSING
 	popupLocationBar: 'Location Bar', // MISSING
 	popupMenuBar: 'Menu Bar', // MISSING
@@ -50,14 +54,15 @@ CKEDITOR.plugins.setLang( 'link', 'tt', {
 	styles: 'Стиль',
 	tabIndex: 'Tab Index', // MISSING
 	target: 'Максат',
-	targetFrame: '<frame>', // MISSING
+	targetFrame: '<frame>',
 	targetFrameName: 'Target Frame Name', // MISSING
-	targetPopup: '<popup window>', // MISSING
-	targetPopupName: 'Popup Window Name', // MISSING
+	targetPopup: '<popup window>',
+	targetPopupName: 'Попап тәрәзәсе исеме',
 	title: 'Сылталама',
 	toAnchor: 'Якорьне текст белән бәйләү',
 	toEmail: 'Электрон почта',
 	toUrl: 'Сылталама',
+	toPhone: 'Phone', // MISSING
 	toolbar: 'Сылталама',
 	type: 'Сылталама төре',
 	unlink: 'Сылталаманы бетерү',

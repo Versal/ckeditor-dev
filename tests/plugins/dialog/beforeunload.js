@@ -1,4 +1,4 @@
-/* bender-tags: editor,unit */
+/* bender-tags: editor */
 /* bender-ckeditor-plugins: dialog */
 
 ( function() {
@@ -21,24 +21,19 @@
 
 	bender.editor = {};
 
-	// #9958
+	// https://dev.ckeditor.com/ticket/9958
 	bender.test( {
 		'test ok button': function() {
-			var counter = 0;
-
-			window.onbeforeunload = function() {
-				counter++;
-			};
+			window.onbeforeunload = sinon.spy();
 
 			this.editor.openDialog( 'testDialog', function( dialog ) {
 				dialog.on( 'show', function() {
-					var doc = new CKEDITOR.dom.document( document ),
-						ok = doc.getById( dialog.getButton( 'ok' ).domId ).$;
+					var okButton = dialog.getButton( 'ok' ).getInputElement();
 
-					ok.click();
+					okButton.$.click();
 
 					resume( function() {
-						assert.areSame( 0, counter, 'Event onbeforeunload should not be fired.' );
+						assert.areSame( 0, window.onbeforeunload.callCount, 'Event onbeforeunload should not be fired.' );
 					} );
 				} );
 			} );

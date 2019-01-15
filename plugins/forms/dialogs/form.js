@@ -1,7 +1,8 @@
-﻿/**
- * @license Copyright (c) 2003-2014, CKSource - Frederico Knabben. All rights reserved.
- * For licensing, see LICENSE.md or http://ckeditor.com/license
+/**
+ * @license Copyright (c) 2003-2019, CKSource - Frederico Knabben. All rights reserved.
+ * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
  */
+
 CKEDITOR.dialog.add( 'form', function( editor ) {
 	var autoAttributes = { action: 1, id: 1, method: 1, enctype: 1, target: 1 };
 
@@ -60,6 +61,7 @@ CKEDITOR.dialog.add( 'form', function( editor ) {
 			title: editor.lang.forms.form.title,
 			elements: [ {
 				id: 'txtName',
+				bidi: true,
 				type: 'text',
 				label: editor.lang.common.name,
 				'default': '',

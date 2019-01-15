@@ -1,6 +1,6 @@
-﻿/**
- * @license Copyright (c) 2003-2014, CKSource - Frederico Knabben. All rights reserved.
- * For licensing, see LICENSE.md or http://ckeditor.com/license
+/**
+ * @license Copyright (c) 2003-2019, CKSource - Frederico Knabben. All rights reserved.
+ * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
  */
 CKEDITOR.dialog.add( 'textarea', function( editor ) {
 	return {
@@ -104,6 +104,21 @@ CKEDITOR.dialog.add( 'textarea', function( editor ) {
 				},
 				commit: function( element ) {
 					element.$.value = element.$.defaultValue = this.getValue();
+				}
+			},
+				{
+				id: 'required',
+				type: 'checkbox',
+				label: editor.lang.forms.textfield.required,
+				'default': '',
+				accessKey: 'Q',
+				value: 'required',
+				setup: CKEDITOR.plugins.forms._setupRequiredAttribute,
+				commit: function( element ) {
+					if ( this.getValue() )
+						element.setAttribute( 'required', 'required' );
+					else
+						element.removeAttribute( 'required' );
 				}
 			} ]
 		} ]

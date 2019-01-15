@@ -15,10 +15,11 @@ module.exports = function( grunt ) {
 		'plugins/**/lang/**',
 		'plugins/uicolor/yui/**',
 		'plugins/htmlwriter/samples/assets/outputforflash/**',
+		'samples/toolbarconfigurator/lib/**',
 		'tests/adapters/jquery/_assets/**',
 		'tests/core/dom/_assets/**',
 		'tests/core/selection/_helpers/rangy.js',
-		'tests/plugins/mathjax/_assets/truncated-mathjax/**'
+		'tests/plugins/pastefromword/generated/_lib/q.js'
 	];
 
 	// Basic configuration which will be overloaded by the tasks.

@@ -1,7 +1,8 @@
-﻿/**
- * @license Copyright (c) 2003-2014, CKSource - Frederico Knabben. All rights reserved.
- * For licensing, see LICENSE.md or http://ckeditor.com/license
+/**
+ * @license Copyright (c) 2003-2019, CKSource - Frederico Knabben. All rights reserved.
+ * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
  */
+
 CKEDITOR.dialog.add( 'button', function( editor ) {
 	function commitAttributes( element ) {
 		var val = this.getValue();
@@ -58,6 +59,7 @@ CKEDITOR.dialog.add( 'button', function( editor ) {
 				{
 					id: 'name',
 					type: 'text',
+					bidi: true,
 					label: editor.lang.common.name,
 					'default': '',
 					setup: function( element ) {

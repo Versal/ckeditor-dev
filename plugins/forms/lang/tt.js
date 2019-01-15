@@ -1,21 +1,22 @@
-﻿/*
-Copyright (c) 2003-2014, CKSource - Frederico Knabben. All rights reserved.
-For licensing, see LICENSE.md or http://ckeditor.com/license
+/*
+Copyright (c) 2003-2019, CKSource - Frederico Knabben. All rights reserved.
+For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
 */
 CKEDITOR.plugins.setLang( 'forms', 'tt', {
 	button: {
 		title: 'Төймә үзлекләре',
-		text: 'Text (Value)', // MISSING
+		text: 'Текст (күләм)',
 		type: 'Төр',
 		typeBtn: 'Төймә',
-		typeSbm: 'Submit', // MISSING
-		typeRst: 'Reset' // MISSING
+		typeSbm: 'Җибәрү',
+		typeRst: 'Кире кайтару'
 	},
 	checkboxAndRadio: {
 		checkboxTitle: 'Checkbox Properties', // MISSING
-		radioTitle: 'Radio Button Properties', // MISSING
-		value: 'Value', // MISSING
-		selected: 'Сайланган'
+		radioTitle: 'Радио төймə үзлекләре',
+		value: 'Күләм',
+		selected: 'Сайланган',
+		required: 'Мәҗбүри'
 	},
 	form: {
 		title: 'Форма үзлекләре',
@@ -31,19 +32,20 @@ CKEDITOR.plugins.setLang( 'forms', 'tt', {
 	},
 	select: {
 		title: 'Selection Field Properties', // MISSING
-		selectInfo: 'Select Info', // MISSING
-		opAvail: 'Available Options', // MISSING
+		selectInfo: 'Информацияне сайлау',
+		opAvail: 'Мөмкин булган көйләүләр',
 		value: 'Күләм',
 		size: 'Зурлык',
 		lines: 'юллар',
 		chkMulti: 'Allow multiple selections', // MISSING
+		required: 'Мәҗбүри',
 		opText: 'Текст',
 		opValue: 'Күләм',
 		btnAdd: 'Кушу',
 		btnModify: 'Үзгәртү',
 		btnUp: 'Өскә',
 		btnDown: 'Аска',
-		btnSetValue: 'Set as selected value', // MISSING
+		btnSetValue: 'Сайланган күләм булып билгеләргә',
 		btnDelete: 'Бетерү'
 	},
 	textarea: {
@@ -57,6 +59,7 @@ CKEDITOR.plugins.setLang( 'forms', 'tt', {
 		value: 'Күләм',
 		charWidth: 'Символлар киңлеге',
 		maxChars: 'Maximum Characters', // MISSING
+		required: 'Мәҗбүри',
 		type: 'Төр',
 		typeText: 'Текст',
 		typePass: 'Сер сүз',

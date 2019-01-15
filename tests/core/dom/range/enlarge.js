@@ -1,4 +1,4 @@
-/* bender-tags: editor,unit,dom,range */
+/* bender-tags: editor,dom,range */
 
 ( function() {
 	'use strict';
@@ -37,7 +37,7 @@
 			assert.isFalse( range.collapsed, 'range.collapsed' );
 		},
 
-		// #8732
+		// https://dev.ckeditor.com/ticket/8732
 		'test enlarge element (HTML comments)': function() {
 			// IE9+Compat throws exception with the below content.
 			if ( CKEDITOR.env.ie && CKEDITOR.env.version < 9 )
@@ -51,7 +51,7 @@
 			assert.areSame( '<!-- foo --><p><strong>foo</strong></p>[<p>bar</p>]<!--bar-->', output );
 		},
 
-		// #4950
+		// https://dev.ckeditor.com/ticket/4950
 		'test enlarge element 16': function() {
 			var ct = doc.getById( 'editable_playground' );
 			var source = '<p><b>A</b> <b>B</b> [C]D</p>';
@@ -176,7 +176,7 @@
 			assert.isFalse( range.collapsed, 'range.collapsed' );
 		},
 
-		// Enlarge without including line-breaks; (#7087)
+		// Enlarge without including line-breaks; (https://dev.ckeditor.com/ticket/7087)
 		test_enlarge_element15: function() {
 			// <p><i>[Enlarge]</i><br /></p>
 			// <p>[<i>Enlarge</i>]<br /></p>
@@ -387,7 +387,7 @@
 
 		/**
 		 * We should stop enlarging the range when it ends right after BR,
-		 * this's the case when a line selection is made in IE/Opera. (#7490)
+		 * this's the case when a line selection is made in IE/Opera. (https://dev.ckeditor.com/ticket/7490)
 		 */
 		test_enlarge_brs: function() {
 			var target = CKEDITOR.document.getById( '_EnlargeP19' ),
@@ -481,7 +481,7 @@
 			assert.areSame( 0, range.startOffset, 'range.startOffset' );
 		},
 
-		// #11798
+		// https://dev.ckeditor.com/ticket/11798
 		'test enlarge between non-editable block and block limit boundary': function() {
 			var target = CKEDITOR.document.getById( 'S29' ),
 				range = new CKEDITOR.dom.range( doc );
@@ -750,8 +750,7 @@
 	};
 
 	// IE only tests.
-	CKEDITOR.env.ie && YUITest.Util.mix( tests,
-	{
+	CKEDITOR.env.ie && YUITest.Util.mix( tests, {
 		test_enlarge_element1: CKEDITOR.env.version > 8 ?
 			function() {
 				// <p> Test <b> <i>  [Enlarge]</i> this</b>   </p>
@@ -768,9 +767,7 @@
 				assert.areSame( document.getElementById( '_EnlargeB' ), range.endContainer.$, 'range.endContainer' );
 				assert.areSame( 2, range.endOffset, 'range.endOffset' );
 				assert.isFalse( range.collapsed, 'range.collapsed' );
-			}
-				:
-			function() {
+			} : function() {
 				// <p>Test <b><i>[Enlarge]</i> this</b></p>
 				// <p>Test <b>[<i>Enlarge</i>] this</b></p>
 
@@ -803,9 +800,7 @@
 				assert.areSame( document.getElementById( '_EnlargeP' ), range.endContainer.$, 'range.endContainer' );
 				assert.areSame( 2, range.endOffset, 'range.endOffset' );
 				assert.isFalse( range.collapsed, 'range.collapsed' );
-			}
-				:
-			function() {
+			} : function() {
 				// <p>Test <b><i>[Enlarge</i> this]</b></p>
 				// <p>Test [<b><i>Enlarge</i> this</b>]</p>
 
@@ -838,8 +833,7 @@
 				assert.areSame( document.getElementById( '_EnlargeB' ), range.endContainer.$, 'range.endContainer' );
 				assert.areSame( 2, range.endOffset, 'range.endOffset' );
 				assert.isFalse( range.collapsed, 'range.collapsed' );
-			} :
-			function() {
+			} : function() {
 				// <p>[Test <b><i>Enlarge]</i> this</b></p>
 				// <p>[Test <b><i>Enlarge</i>] this</b></p>
 
@@ -872,8 +866,7 @@
 				assert.areSame( document.getElementById( '_EnlargeP' ).parentNode, range.endContainer.$, 'range.endContainer' );
 				assert.areSame( doc.getById( '_EnlargeP' ).getIndex() + 1, range.endOffset, 'range.endOffset' );
 				assert.isFalse( range.collapsed, 'range.collapsed' );
-			} :
-			function() {
+			} : function() {
 				// <p>[Test <b><i>Enlarge</i> this]</b></p>
 				// [<p>Test <b><i>Enlarge</i> this</b></p>]
 
@@ -923,9 +916,7 @@
 				assert.areSame( document.getElementById( '_EnlargeB2' ), range.endContainer.$, 'range.endContainer' );
 				assert.areSame( 2, range.endOffset, 'range.endOffset' );
 				assert.isFalse( range.collapsed, 'range.collapsed' );
-			}
-			:
-			function() {
+			} : function() {
 				// <p><b><i>[Enlarge</i>] this</b></p>
 				// <p><b>[<i>Enlarge</i>] this</b></p>
 
@@ -958,9 +949,7 @@
 				assert.areSame( document.getElementById( '_EnlargeP2' ).parentNode, range.endContainer.$, 'range.endContainer' );
 				assert.areSame( doc.getById( '_EnlargeP2' ).getIndex() + 1, range.endOffset, 'range.endOffset' );
 				assert.isFalse( range.collapsed, 'range.collapsed' );
-			}
-			:
-			function() {
+			} : function() {
 				// <p><b><i>[Enlarge</i> this]</b></p>
 				// [<p><b><i>Enlarge</i> this</b></p>]
 
@@ -993,8 +982,7 @@
 				assert.areSame( document.getElementById( '_EnlargeP2' ).parentNode, range.endContainer.$, 'range.endContainer' );
 				assert.areSame( doc.getById( '_EnlargeP2' ).getIndex() + 1, range.endOffset, 'range.endOffset' );
 				assert.isFalse( range.collapsed, 'range.collapsed' );
-			} :
-			function() {
+			} : function() {
 				// <p>Test <b><i>[Enlarge</i> this</b></p><p><b><i>Enlarge</i> this]</b></p>
 				// <p>Test [<b><i>Enlarge</i> this</b></p><p><b><i>Enlarge</i> this</b></p>]
 

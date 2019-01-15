@@ -1,4 +1,4 @@
-/* bender-tags: editor,unit,widget */
+/* bender-tags: editor,widget */
 /* bender-ckeditor-plugins: mathjax,dialog,toolbar,preview,clipboard,basicstyles,undo,wysiwygarea */
 
 ( function() {
@@ -6,7 +6,11 @@
 
 	CKEDITOR.disableAutoInline = true;
 
-	var mathJaxLib = '_assets/truncated-mathjax/MathJax.js?config=TeX-AMS_HTML';
+	var mathJaxLib = bender.config.mathJaxLibPath;
+
+	if ( !mathJaxLib ) {
+		throw new Error( 'bender.config.mathJaxLibPath should be defined with the path to MathJax lib (MathJax.js?config=TeX-AMS_HTML).' );
+	}
 
 	var editor;
 
@@ -47,8 +51,9 @@
 		},
 
 		'async:init': function() {
-			if ( CKEDITOR.env.ie && CKEDITOR.env.version < 9 )
+			if ( CKEDITOR.env.ie && CKEDITOR.env.version < 9 ) {
 				assert.ignore();
+			}
 
 			var tc = this;
 
@@ -95,7 +100,7 @@
 					} ) );
 				},
 				then: function( iFrame ) {
-					assert.areSame( '20px', iFrame.getFrameDocument().getById( 'preview' ).getComputedStyle( 'font-size' ) );
+					assert.areSame( '20px', floor( iFrame.getFrameDocument().getById( 'preview' ).getComputedStyle( 'font-size' ) ) );
 				}
 			} );
 		},
@@ -184,4 +189,8 @@
 			} );
 		}
 	} );
+
+	function floor( value ) {
+		return Math.floor( value.replace( 'px', '' ) ) + 'px';
+	}
 } )();

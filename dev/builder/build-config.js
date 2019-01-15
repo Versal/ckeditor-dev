@@ -1,6 +1,6 @@
 /**
- * @license Copyright (c) 2003-2014, CKSource - Frederico Knabben. All rights reserved.
- * For licensing, see LICENSE.md or http://ckeditor.com/license
+ * @license Copyright (c) 2003-2019, CKSource - Frederico Knabben. All rights reserved.
+ * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
  */
 
 /* exported CKBUILDER_CONFIG */
@@ -9,11 +9,15 @@ var CKBUILDER_CONFIG = {
 	skin: 'versal',
 	ignore: [
 		'bender.js',
+		'bender.ci.js',
 		'.bender',
 		'bender-err.log',
 		'bender-out.log',
+		'.travis.yml',
 		'dev',
+		'docs',
 		'.DS_Store',
+		'.editorconfig',
 		'.gitignore',
 		'.gitattributes',
 		'gruntfile.js',
@@ -21,6 +25,7 @@ var CKBUILDER_CONFIG = {
 		'.jscsrc',
 		'.jshintignore',
 		'.jshintrc',
+		'less',
 		'.mailmap',
 		'node_modules',
 		'package.json',
@@ -42,6 +47,7 @@ var CKBUILDER_CONFIG = {
 		clipboard: 1,
 		colorbutton: 1,
 		colordialog: 1,
+		copyformatting: 1,
 		// contextmenu: 1,
 		dialogadvtab: 1,
 		div: 1,
@@ -62,6 +68,7 @@ var CKBUILDER_CONFIG = {
 		indentlist: 1,
 		indentblock: 1,
 		justify: 1,
+		language: 1,
 		link: 1,
 		linkutils: 1,
 		list: 1,
@@ -88,10 +95,12 @@ var CKBUILDER_CONFIG = {
 		stylescombo: 1,
 		tab: 1,
 		// table: 1,
+		tableselection: 1,
 		// tabletools: 1,
 		templates: 1,
 		toolbar: 1,
 		undo: 1,
+		uploadimage: 1,
 		wysiwygarea: 1
 	},
 	languages : {

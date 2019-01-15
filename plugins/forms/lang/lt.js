@@ -1,6 +1,6 @@
-﻿/*
-Copyright (c) 2003-2014, CKSource - Frederico Knabben. All rights reserved.
-For licensing, see LICENSE.md or http://ckeditor.com/license
+/*
+Copyright (c) 2003-2019, CKSource - Frederico Knabben. All rights reserved.
+For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
 */
 CKEDITOR.plugins.setLang( 'forms', 'lt', {
 	button: {
@@ -15,7 +15,8 @@ CKEDITOR.plugins.setLang( 'forms', 'lt', {
 		checkboxTitle: 'Žymimojo langelio savybės',
 		radioTitle: 'Žymimosios akutės savybės',
 		value: 'Reikšmė',
-		selected: 'Pažymėtas'
+		selected: 'Pažymėtas',
+		required: 'Required' // MISSING
 	},
 	form: {
 		title: 'Formos savybės',
@@ -37,6 +38,7 @@ CKEDITOR.plugins.setLang( 'forms', 'lt', {
 		size: 'Dydis',
 		lines: 'eilučių',
 		chkMulti: 'Leisti daugeriopą atranką',
+		required: 'Required', // MISSING
 		opText: 'Tekstas',
 		opValue: 'Reikšmė',
 		btnAdd: 'Įtraukti',
@@ -57,6 +59,7 @@ CKEDITOR.plugins.setLang( 'forms', 'lt', {
 		value: 'Reikšmė',
 		charWidth: 'Ilgis simboliais',
 		maxChars: 'Maksimalus simbolių skaičius',
+		required: 'Required', // MISSING
 		type: 'Tipas',
 		typeText: 'Tekstas',
 		typePass: 'Slaptažodis',

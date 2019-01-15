@@ -1,6 +1,6 @@
 /**
- * Copyright (c) 2014, CKSource - Frederico Knabben. All rights reserved.
- * Licensed under the terms of the MIT License (see LICENSE.md).
+ * @license Copyright (c) 2003-2019, CKSource - Frederico Knabben. All rights reserved.
+ * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
  */
 
 /* jshint browser: false, node: true */
@@ -23,9 +23,7 @@ module.exports = {
 	build: null,
 
 	attach: function() {
-		var bender = this,
-			html,
-			idx;
+		var bender = this;
 
 		function build( data ) {
 			var head = [ '<head>\n', '<title>', data.id, '</title>\n' ];
@@ -40,8 +38,9 @@ module.exports = {
 
 			// add CKEditor plugins/adapters configuration if needed
 			if ( data.ckeditor && (
-				data.ckeditor.plugins || data.ckeditor[ 'remove-plugins' ] || data.ckeditor.adapters
-			) ) {
+					data.ckeditor.plugins || data.ckeditor[ 'remove-plugins' ] ||
+					( data.ckeditor.remove && data.ckeditor.remove.plugins ) || data.ckeditor.adapters
+				) ) {
 				head.push(
 					'<script>\n(function (bender) {\n',
 					'bender.configureEditor(',
@@ -60,13 +59,8 @@ module.exports = {
 
 		module.exports.build = build;
 
-		html = bender.plugins[ 'bender-pagebuilder-html' ];
+		var priority = bender.pagebuilders.getPriority( 'html' );
 
-		// add plugin before pagebuilder-html
-		if ( html && ( idx = bender.pagebuilders.indexOf( html.build ) ) > -1 ) {
-			bender.pagebuilders.splice( idx, 0, build );
-		} else {
-			bender.pagebuilders.push( build );
-		}
+		bender.pagebuilders.add( 'ckeditor', build, priority - 1 );
 	}
 };

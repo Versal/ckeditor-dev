@@ -1,8 +1,8 @@
-/* bender-tags: editor,unit */
+/* bender-tags: editor */
 /* bender-ckeditor-plugins: list,table,undo */
 /* global quirksTools */
 
-( function( bd, bdf, b ) {
+( function( bd, bdf, b, df ) {
 	'use strict';
 
 	bender.editor = {
@@ -14,6 +14,9 @@
 
 	bender.test( {
 		setUp: function() {
+			// Preventing removing empty <small> tag.
+			delete CKEDITOR.dtd.$removeEmpty.small;
+
 			if ( !CKEDITOR.env.webkit )
 				assert.ignore();
 		},
@@ -48,6 +51,18 @@
 			} );
 		},
 
+		'test delete on two paragraphs in read-only mode': function() {
+			this.editor.setReadOnly( true );
+
+			try {
+				df( '<p>[Test</p><p>Test]</p>', '<p>[Test</p><p>Test]</p>' ).call( this );
+			} catch ( e ) {
+				throw e;
+			} finally {
+				this.editor.setReadOnly( false );
+			}
+		},
+
 		'test backspace and delete #1':					bd( '<p>xx[x</p><p>y]yy</p>',															'<p>xx^yy</p>' ),
 		'test backspace and delete #2':					bd( '<div>xx[x</div><div>y]yy</div>',													'<div>xx^yy</div>' ),
 		'test backspace and delete #3':					bd( '<p>x<strong>x[x</strong></p><p>y]yy</p>',											'<p>x<strong>x^</strong>yy</p>' ),
@@ -79,6 +94,9 @@
 		'test backspace and delete, bogus #3':			bd( '<p>[@</p><p>]@</p>', '<p>^@</p>' ),
 		'test backspace and delete, bogus #4':			bd( '<p>@[</p><p>]@</p>', '<p>^@</p>' ),
 
+		// https://dev.ckeditor.com/ticket/12503.
+		'test backspace and delete, bogus #5':			bd( '<h1>{Foo</h1><p>bar</p><p><small>baz}</small></p>', '<h1>^@!</h1>' ),
+
 		// Merge inline elements after keystroke.
 		'test backspace and delete, no action #1':		bdf( '<table><tbody><tr><td>x[x</td></tr></tbody></table><p>y]y</p>' ),
 		'test backspace and delete, no action #2':		bdf( '<table><tbody><tr><td>x[x</td><td>zz</td></tr></tbody></table><p>y]y</p>' ),
@@ -87,4 +105,4 @@
 		'test backspace and delete, no action #5':		bdf( '<p>x[xy]y</p>' ),
 		'test backspace and delete, no action #6':		bdf( '<table><tbody><tr><td>x[x</td></tr></tbody></table><table><tbody><tr><td>y]y</td></tr></tbody></table>' )
 	} );
-} )( quirksTools.bd, quirksTools.bdf, quirksTools.b );
+} )( quirksTools.bd, quirksTools.bdf, quirksTools.b, quirksTools.df );

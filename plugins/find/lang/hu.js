@@ -1,14 +1,14 @@
-﻿/*
-Copyright (c) 2003-2014, CKSource - Frederico Knabben. All rights reserved.
-For licensing, see LICENSE.md or http://ckeditor.com/license
+/*
+Copyright (c) 2003-2019, CKSource - Frederico Knabben. All rights reserved.
+For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
 */
 CKEDITOR.plugins.setLang( 'find', 'hu', {
 	find: 'Keresés',
-	findOptions: 'Find Options',
+	findOptions: 'Beállítások',
 	findWhat: 'Keresett szöveg:',
-	matchCase: 'kis- és nagybetű megkülönböztetése',
+	matchCase: 'Kis- és nagybetű megkülönböztetése',
 	matchCyclic: 'Ciklikus keresés',
-	matchWord: 'csak ha ez a teljes szó',
+	matchWord: 'Csak ha ez a teljes szó',
 	notFoundMsg: 'A keresett szöveg nem található.',
 	replace: 'Csere',
 	replaceAll: 'Az összes cseréje',
