@@ -27,7 +27,7 @@ CKEDITOR.editorConfig = function( config ) {
 		'filebrowser,' +
 		'find,' +
 		'flash,' +
-		// 'floatingspace,' +
+		'floatingspace,' +
 		'font,' +
 		'format,' +
 		'forms,' +
@@ -43,7 +43,7 @@ CKEDITOR.editorConfig = function( config ) {
 		'linkutils,' +
 		'list,' +
 		// 'liststyle,' +
-		'magicline,' +
+		// 'magicline,' +
 		'maximize,' +
 		'newpage,' +
 		'pagebreak,' +
@@ -64,7 +64,7 @@ CKEDITOR.editorConfig = function( config ) {
 		'stylescombo,' +
 		'tab,' +
 		// 'table,' +
-		'tableselection,' +
+		// 'tableselection,' +
 		// 'tabletools,' +
 		'templates,' +
 		'toolbar,' +
@@ -126,6 +126,7 @@ CKEDITOR.editorConfig = function( config ) {
 			// a workaround because of this bug
 			// http://dev.ckeditor.com/ticket/12287
 			// http://ckeditor.com/forums/Plugins/Problems-removing-dialog-fields-of-link-plugin-in-4.4.3
+			infoTab.get( 'linkDisplayText' ).style = 'display: none';
 			infoTab.get( 'linkType' ).style = 'display: none';
 			infoTab.get( 'urlOptions' ).children[ 0 ].children[ 0 ].style = 'display: none';
 
